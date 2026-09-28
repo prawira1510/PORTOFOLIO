@@ -206,6 +206,11 @@ body.scroll-enabled {
     100% { transform: translateY(-100%); opacity: 0; visibility: hidden; }
 }
 
+/* HEADER KHUSUS PDF (Sembunyi secara default di browser) */
+.pdf-header {
+    display: none;
+}
+
 /* MAIN WRAPPER */
 .main-wrapper {
     opacity: 0;
@@ -248,7 +253,7 @@ body.scroll-enabled {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 1.8rem;
+    gap: 1.5rem;
     align-items: center;
 }
 
@@ -288,7 +293,7 @@ body.scroll-enabled {
     width: 100%;
 }
 
-/* Button Download PDF Navbar */
+/* Tombol Download PDF Nav */
 .btn-pdf-nav {
     background: linear-gradient(135deg, #e63946 0%, #d62828 100%);
     color: white;
@@ -861,10 +866,6 @@ body.scroll-enabled {
     margin-bottom: 1rem;
 }
 
-.project-content strong {
-    color: #646cff;
-}
-
 .project-tech {
     display: flex;
     flex-wrap: wrap;
@@ -1038,35 +1039,6 @@ footer i {
 }
 
 /* RESPONSIVE DESIGN (TABLET & MOBILE) */
-
-/* Tablet View (max-width: 1024px) */
-@media (max-width: 1024px) {
-    .nav-container {
-        padding: 1rem 1.5rem;
-    }
-
-    .nav-menu {
-        gap: 1rem;
-    }
-
-    .nav-menu a {
-        font-size: 0.9rem;
-    }
-
-    .experience-item, .project-item {
-        gap: 2rem;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .cert-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Mobile & Small Tablet View (max-width: 968px) */
 @media (max-width: 968px) {
     .opening-container {
         flex-direction: column;
@@ -1088,8 +1060,13 @@ footer i {
         font-size: 1.2rem;
     }
     
-    .about-content {
+    .about-content, .visi-misi-wrapper, .contact-wrapper, .experience-item, .project-item {
         grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+
+    .experience-item.reverse, .project-item.reverse {
+        flex-direction: column;
     }
     
     .about-image {
@@ -1097,57 +1074,17 @@ footer i {
         max-width: 350px;
         margin: 0 auto;
     }
-    
-    .visi-misi-wrapper {
-        grid-template-columns: 1fr;
-    }
-    
-    .contact-wrapper {
-        grid-template-columns: 1fr;
-    }
-    
-    .experience-item, .project-item {
-        flex-direction: column;
-    }
-    
-    .experience-item.reverse, .project-item.reverse {
-        flex-direction: column;
-    }
-    
+
     .exp-image, .project-image {
-        min-width: auto;
         width: 100%;
         max-height: 280px;
     }
     
     .exp-image img, .project-image img {
-        min-height: auto;
         height: 260px;
-    }
-    
-    .exp-content, .project-content {
-        padding: 1.5rem;
-    }
-    
-    .exp-content h3, .project-content h3 {
-        font-size: 1.3rem;
-    }
-    
-    .exp-meta {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .hero-title {
-        font-size: 2rem;
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
     }
 }
 
-/* Mobile Menu & Hamburger Navigation (max-width: 868px) */
 @media (max-width: 868px) {
     .nav-menu {
         position: fixed;
@@ -1155,16 +1092,13 @@ footer i {
         top: 65px;
         flex-direction: column;
         background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
         width: 100%;
         height: calc(100vh - 65px);
         overflow-y: auto;
         text-align: center;
         transition: 0.4s ease-in-out;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1);
         padding: 2rem 0;
         gap: 1.2rem;
-        justify-content: flex-start;
     }
     
     .nav-menu.active {
@@ -1174,125 +1108,75 @@ footer i {
     .hamburger {
         display: flex;
     }
-    
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-    }
-    
-    .section {
-        padding: 60px 15px;
-    }
-    
-    .closing-content p {
-        text-align: center;
-    }
-    
-    .quote {
-        text-align: center;
-        border-left: none;
-        padding-left: 0;
-        border-top: 2px solid #646cff;
-        border-bottom: 2px solid #646cff;
-        padding: 1rem 0;
-    }
+
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
 
     .gallery-grid, .cert-grid {
         grid-template-columns: 1fr;
     }
-
-    .btn-floating-pdf {
-        bottom: 20px;
-        right: 20px;
-        padding: 10px 18px;
-        font-size: 0.9rem;
-    }
 }
 
-@media (max-width: 480px) {
-    .nav-container {
-        padding: 0.8rem 1rem;
-    }
-    
-    .nav-logo h2 {
-        font-size: 1.1rem;
-    }
-    
-    .hero {
-        padding: 80px 15px;
-    }
-    
-    .hero-title {
-        font-size: 1.5rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 0.9rem;
-    }
-    
-    .section-title {
-        font-size: 1.5rem;
-    }
-    
-    .exp-image img, .project-image img {
-        height: 200px;
-    }
-    
-    .gallery-caption, .cert-info {
-        padding: 1rem;
-    }
-    
-    .gallery-caption h4 {
-        font-size: 1rem;
-    }
-    
-    .gallery-caption p {
-        font-size: 0.85rem;
-    }
-    
-    .contact-item {
-        padding: 0.8rem;
-    }
-    
-    .contact-item i {
-        font-size: 1.5rem;
-        width: 40px;
-    }
-    
-    .quote {
-        font-size: 0.9rem;
-    }
-}
-
-/* ===================================================
-   STYLES KHUSUS UNTUK CETAK / DOWNLOAD PDF (WINDOW.PRINT)
-   =================================================== */
+/* =========================================================
+   STYLE ELEGAN & ELEGAN KHUSUS CETAK PDF (@media print)
+   ========================================================= */
 @media print {
-    /* Sembunyikan elemen yang tidak perlu dalam PDF */
+    /* Margin Halaman PDF A4 */
+    @page {
+        size: A4;
+        margin: 15mm 15mm 15mm 15mm;
+    }
+
+    /* Sembunyikan elemen Web interaktif */
     .opening-screen,
     .navbar,
     .btn-floating-pdf,
     .hamburger,
+    .hero,
+    .contact-form,
+    .about-social,
     .project-overlay,
     .project-btn,
     .project-link,
-    .contact-form,
-    .about-social {
+    footer {
         display: none !important;
     }
 
-    /* Paksa main wrapper agar tampil utuh */
+    /* Tampilkan Header PDF Khusus */
+    .pdf-header {
+        display: block !important;
+        border-bottom: 2px solid #1a1a2e;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .pdf-header h1 {
+        font-size: 22pt;
+        color: #1a1a2e;
+        letter-spacing: 2px;
+        margin-bottom: 4px;
+    }
+
+    .pdf-header p {
+        font-size: 11pt;
+        color: #646cff;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .pdf-contact-inline {
+        font-size: 8.5pt;
+        color: #555;
+    }
+
+    /* Reset Body & Main Wrapper */
     body {
         background: #ffffff !important;
-        color: #000000 !important;
+        color: #111111 !important;
         overflow: visible !important;
+        font-size: 9.5pt !important;
     }
 
     .main-wrapper {
@@ -1300,50 +1184,159 @@ footer i {
         visibility: visible !important;
     }
 
-    /* Hilangkan background gradients gelap/warna-warni agar cetak bersih */
-    .hero, .closing, footer, .alt-bg {
-        background: #ffffff !important;
-        color: #000000 !important;
-    }
-
-    .hero-title, .hero-subtitle, .section-title, .text-white {
-        color: #000000 !important;
-    }
-
-    .section-title::after {
-        background: #333333 !important;
-    }
-
+    /* Penataan Section agar Rapi & Tidak Terpotong Sembarangan */
     .section {
         opacity: 1 !important;
         transform: none !important;
-        padding: 30px 0 !important;
+        padding: 15px 0 !important;
         page-break-inside: avoid;
-    }
-
-    .card-icon, .misi-card li::before, .exp-meta span {
-        color: #333 !important;
-    }
-
-    .visi-card, .misi-card, .gallery-item, .cert-card, .experience-item, .project-item, .contact-item {
-        box-shadow: none !important;
-        border: 1px solid #ddd !important;
         break-inside: avoid;
-        page-break-inside: avoid;
-        margin-bottom: 20px !important;
     }
 
-    .closing-content p, .quote {
-        color: #000 !important;
+    .alt-bg, .closing {
+        background: transparent !important;
+        color: #111111 !important;
+    }
+
+    .section-title {
+        font-size: 14pt !important;
+        text-align: left !important;
+        margin-bottom: 15px !important;
+        color: #1a1a2e !important;
+        border-bottom: 1.5px solid #646cff;
+        padding-bottom: 5px !important;
+    }
+
+    .section-title::after {
+        display: none !important;
+    }
+
+    /* Layout Cards & Grids untuk Cetak A4 */
+    .about-content, .visi-misi-wrapper, .contact-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 15px !important;
+    }
+
+    .about-text {
+        flex: 1.5;
+    }
+
+    .about-image {
+        flex: 0.8;
+        max-width: 180px !important;
+        border-radius: 10px !important;
+        box-shadow: none !important;
+    }
+
+    .visi-card, .misi-card {
+        flex: 1;
+        padding: 12px !important;
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 8px !important;
+        box-shadow: none !important;
+    }
+
+    .card-icon {
+        display: none;
+    }
+
+    /* Grid Sertifikat & Favorit (3 Kolom Rapi) */
+    .cert-grid, .gallery-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 12px !important;
+    }
+
+    .cert-card, .gallery-item {
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 8px !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .cert-card img, .gallery-img-wrapper img {
+        height: 110px !important;
+        object-fit: cover !important;
+    }
+
+    .cert-info, .gallery-caption {
+        padding: 8px !important;
+    }
+
+    .cert-info h4, .gallery-caption h4 {
+        font-size: 8.5pt !important;
+    }
+
+    .cert-info p, .gallery-caption p {
+        font-size: 7.5pt !important;
+        color: #666 !important;
+    }
+
+    /* Pengalaman Kerja & Project Items */
+    .experience-item, .project-item {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 15px !important;
+        padding: 12px !important;
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 8px !important;
+        box-shadow: none !important;
+        margin-bottom: 15px !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .exp-image, .project-image {
+        flex: 0.5 !important;
+        min-width: 140px !important;
+        max-width: 160px !important;
+    }
+
+    .exp-image img, .project-image img {
+        height: 120px !important;
+        border-radius: 6px !important;
+    }
+
+    .exp-content, .project-content {
+        flex: 1.5 !important;
+        padding: 0 !important;
+    }
+
+    .exp-content h3, .project-content h3 {
+        font-size: 11pt !important;
+        color: #1a1a2e !important;
+    }
+
+    .exp-tech span, .project-tech span {
+        border: 1px solid #646cff !important;
+        background: transparent !important;
+        color: #646cff !important;
+        font-size: 7pt !important;
+        padding: 2px 6px !important;
+    }
+
+    /* Kontak & Penutup */
+    .contact-info {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+    }
+
+    .contact-item {
+        padding: 6px 10px !important;
+        border: 1px solid #eee !important;
+        box-shadow: none !important;
+    }
+
+    .closing-content p {
+        color: #222 !important;
     }
 
     .quote {
-        border-left: 3px solid #333 !important;
-    }
-
-    /* Pastikan gambar tampil presisi saat diprint */
-    img {
-        max-width: 100% !important;
-        page-break-inside: avoid;
+        border-left: 2px solid #646cff !important;
+        padding-left: 10px !important;
+        color: #444 !important;
     }
 }

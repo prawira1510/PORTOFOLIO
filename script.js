@@ -141,34 +141,33 @@ if (contactForm) {
     });
 }
 
-// ==========================================
-// FITUR DOWNLOAD PORTOFOLIO KE PDF
-// ==========================================
+// =========================================================
+// FUNGSI UTAMA FITUR CETAK / DOWNLOAD PORTOFOLIO KE PDF
+// =========================================================
 function downloadPortfolioPDF() {
-    // Pastikan konten portofolio utama dimunculkan
+    // 1. Tampilkan portofolio utama jika masih di-lock
     mainWrapper.classList.add('show');
     body.classList.add('scroll-enabled');
     
-    // Tampilkan semua section yang belum ter-reveal
+    // 2. Tampilkan seluruh section & elemen animasi tanpa animasi tunda
     document.querySelectorAll('.section').forEach(sec => {
         sec.classList.add('revealed');
         sec.style.opacity = '1';
         sec.style.transform = 'translateY(0)';
     });
 
-    // Tampilkan semua elemen kartu
     document.querySelectorAll('.gallery-item, .cert-card, .experience-item, .project-item, .visi-card, .misi-card, .contact-item').forEach(card => {
         card.style.opacity = '1';
         card.style.transform = 'translateY(0)';
     });
 
-    // Panggil dialog Cetak/Save to PDF bawaan browser
+    // 3. Panggil dialog Cetak/Save to PDF browser
     setTimeout(() => {
         window.print();
-    }, 300);
+    }, 250);
 }
 
-// Event listener untuk tombol PDF di Navbar & Floating
+// Event Listeners Tombol Download PDF
 const btnPDFNav = document.getElementById('btnDownloadPDFNav');
 const btnPDFFloating = document.getElementById('btnDownloadPDF');
 
@@ -182,19 +181,4 @@ if (btnPDFFloating) {
 
 window.addEventListener('load', () => {
     console.log('Portfolio website ready - waiting for OPEN button');
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        if (mainWrapper.classList.contains('show')) {
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-    });
 });
