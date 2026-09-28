@@ -76,7 +76,6 @@ function updateActiveLink() {
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
         if (window.scrollY >= (sectionTop - 150)) {
             current = section.getAttribute('id');
         }
@@ -112,7 +111,7 @@ navLinks.forEach(link => {
     });
 });
 
-// Hamburger Menu
+// Hamburger Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -140,6 +139,45 @@ if (contactForm) {
         alert('✨ Terima kasih! Pesan Anda telah terkirim. Saya akan segera menghubungi Anda.');
         contactForm.reset();
     });
+}
+
+// ==========================================
+// FITUR DOWNLOAD PORTOFOLIO KE PDF
+// ==========================================
+function downloadPortfolioPDF() {
+    // Pastikan konten portofolio utama dimunculkan
+    mainWrapper.classList.add('show');
+    body.classList.add('scroll-enabled');
+    
+    // Tampilkan semua section yang belum ter-reveal
+    document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.add('revealed');
+        sec.style.opacity = '1';
+        sec.style.transform = 'translateY(0)';
+    });
+
+    // Tampilkan semua elemen kartu
+    document.querySelectorAll('.gallery-item, .cert-card, .experience-item, .project-item, .visi-card, .misi-card, .contact-item').forEach(card => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+    });
+
+    // Panggil dialog Cetak/Save to PDF bawaan browser
+    setTimeout(() => {
+        window.print();
+    }, 300);
+}
+
+// Event listener untuk tombol PDF di Navbar & Floating
+const btnPDFNav = document.getElementById('btnDownloadPDFNav');
+const btnPDFFloating = document.getElementById('btnDownloadPDF');
+
+if (btnPDFNav) {
+    btnPDFNav.addEventListener('click', downloadPortfolioPDF);
+}
+
+if (btnPDFFloating) {
+    btnPDFFloating.addEventListener('click', downloadPortfolioPDF);
 }
 
 window.addEventListener('load', () => {
